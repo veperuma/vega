@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@3"></script>
+</head>
+<body>
+
+<div id="vis"></div>
+<div id="vis2"></div>
+
+<script type="text/javascript">
+  var spec = "https://raw.githubusercontent.com/veperuma/vega/master/barchart.json";
+  vegaEmbed('#vis', spec).then(function(result) {
+  }).catch(console.error);
+
+  var spec1 = "https://raw.githubusercontent.com/veperuma/vega/master/choropleth.json";
+  vegaEmbed('#vis2', spec1).then(function(result) {
+  }).catch(console.error);
+  </script>
+  
+</body>
+</html>
