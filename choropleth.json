@@ -5,7 +5,7 @@
   "autosize": "none",
   "data": [
     {
-      "name": "losses",
+      "name": "LossesOccured",
       "url": "https://raw.githubusercontent.com/veperuma/vega/master/losses2015_transformed.csv",
       "format": {"type": "csv", "parse": "auto"},
       "transform": [{
@@ -17,11 +17,11 @@
 }]
     },
     {
-      "name": "states",
+      "name": "StatesPresent",
       "url": "https://raw.githubusercontent.com/veperuma/vega/master/us-10m.json",
       "format": {"type": "topojson", "feature": "states"},
       "transform": [
-        { "type": "lookup", "from": "losses", "key": "State_Code", "fields": ["id"], "values": ["State_Code","Amount","State_Abv"] },
+        { "type": "lookup", "from": "LossesOccured", "key": "State_Code", "fields": ["id"], "values": ["State_Code","Amount","State_Abv"] },
         { "type": "filter", "expr": "datum.Amount != null" }
       ]
     }
@@ -54,7 +54,7 @@
   "marks": [
     {
       "type": "shape",
-      "from": {"data": "states"},
+      "from": {"data": "StatesPresent"},
       "encode": {
         "enter": { "tooltip": {"signal": "'State:'+ datum.State_Abv +' Amount:' + format(datum.Amount,',d')"}},
         "update": { "fill": {"scale": "color", "field": "Amount"} },
